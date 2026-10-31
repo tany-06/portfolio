@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tanya Singh — Creative Portfolio · Computer Science Engineer</title>
+  <meta name="description" content="Cinematic editorial portfolio of Tanya Singh. Computer Science Engineering aspirant at Chennai Institute of Technology (CIT). Logic, design, and systems engineering.">
+  <meta name="keywords" content="Tanya Singh, Computer Science, CIT Chennai, Developer Portfolio, C, Python, MySQL, Software Engineering">
+  <meta name="author" content="Tanya Singh">
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Tanya Singh — Creative Engineering Portfolio">
+  <meta property="og:description" content="Cinematic editorial portfolio showcasing programming logic, systems development, and awards.">
+  <meta property="og:image" content="./assets/img/portrait.jpg">
+
+  <!-- Google Fonts: Bebas Neue, Anton, Playfair Display, DM Sans, Inter, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+  <!-- Film Grain Overlay -->
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <!-- Ambient Crimson Radial Glows -->
+  <div class="ambient-glows" aria-hidden="true">
+    <div class="glow-orb glow-top-center"></div>
+    <div class="glow-orb glow-mid-right"></div>
+    <div class="glow-orb glow-bot-left"></div>
+  </div>
+
+  <!-- Custom Cinematic Cursor -->
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <!-- 1. PRELOADER -->
+  <div id="preloader" class="preloader" aria-label="Loading portfolio experience">
+    <div class="preloader-content">
+      <div class="preloader-header">
+        <span class="preloader-name">Tanya Singh</span>
+        <span id="preloaderCounter" class="preloader-counter">00%</span>
+      </div>
+      <div class="preloader-bar-wrap">
+        <div id="preloaderBar" class="preloader-bar"></div>
+      </div>
+      <p class="preloader-quote">"Small steps in code become big leaps in possibility."</p>
+    </div>
+  </div>
+
+  <!-- SITE HEADER / MINIMAL STICKY NAV -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="#hero" class="nav-brand" aria-label="Tanya Singh Portfolio Home">
+        <span class="brand-monogram">TS</span>
+        <span class="brand-name">Tanya Singh</span>
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav-links">
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#process" class="nav-link">Process</a></li>
+        <li><a href="#work" class="nav-link">Work</a></li>
+        <li><a href="#achievements" class="nav-link">Milestones</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <a href="#contact" class="nav-cta magnetic-target">
+        <span class="status-dot"></span>
+        <span>Get in Touch</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- 2. HERO SECTION (EDITORIAL POSTER) -->
+    <section id="hero" class="section hero-section">
+      <div class="container">
+        
+        <!-- Top Bar -->
+        <div class="hero-top-bar">
+          <div class="label-tag">
+            <span>CREATIVE PORTFOLIO</span>
+          </div>
+          <div class="hero-top-right">
+            <span class="status-dot"></span>
+            <span class="label-tag">OPEN TO OPPORTUNITIES</span>
+          </div>
+        </div>
+
+        <!-- Full-Width Giant Headline "PORTFOLIO" -->
+        <div class="hero-headline-wrap">
+          <h1 class="hero-headline" aria-label="PORTFOLIO">
+            <span class="char">P</span>
+            <span class="char">O</span>
+            <span class="char">R</span>
+            <span class="char">T</span>
+            <span class="char">F</span>
+            <span class="char">O</span>
+            <span class="char">L</span>
+            <span class="char">I</span>
+            <span class="char">O</span>
+          </h1>
+        </div>
+
+        <!-- Overlapping Centerpiece Stage -->
+        <div class="hero-stage">
+          
+          <!-- Left Column: Editorial Meta -->
+          <div class="hero-left-col">
+            <h2 class="hero-tagline-title">CSE / TECH / BUILD</h2>
+            <p class="hero-subtitles">PROGRAMMING · DATABASES · CYBERSECURITY</p>
+            <div class="hero-quote-box">
+              <p>"Small steps in code become big leaps in possibility."</p>
+            </div>
+          </div>
+
+          <!-- Center Column: Portrait with Large Crimson Disc -->
+          <div class="hero-portrait-wrapper">
+            <div class="hero-crimson-circle" aria-hidden="true"></div>
+            <div class="hero-portrait-img-wrap">
+              <img 
+                src="./assets/img/portrait.png" 
+                alt="Tanya Singh, Computer Science Engineering Aspirant" 
+                class="hero-portrait-img"
+                loading="eager"
+              >
+            </div>
+          </div>
+
+          <!-- Right Column: Profile & Rotating Star Badge -->
+          <div class="hero-right-col">
+            
+            <!-- Rotating Circular Text Badge -->
+            <div class="hero-badge-wrap" aria-hidden="true">
+              <svg viewBox="0 0 160 160" class="hero-badge-svg">
+                <path id="heroBadgePath" d="M 80, 80 m -62, 0 a 62,62 0 1,1 124,0 a 62,62 0 1,1 -124,0" fill="none" />
+                <text font-size="10.8" letter-spacing="2.8" fill="#efe3c9" font-family="'DM Sans', sans-serif" font-weight="600">
+                  <textPath href="#heroBadgePath" startOffset="0%">
+                    ✦ TANYA SINGH ✦ CREATIVE DEVELOPER ✦ CIT 2025 ✦
+                  </textPath>
+                </text>
+              </svg>
+              <div class="hero-badge-star">✦</div>
+            </div>
+
+            <h2 class="hero-name">TANYA SINGH</h2>
+            <p class="hero-role">Computer Science Engineering Aspirant</p>
+            <p class="hero-bio">
+              Preparing for engineering at Chennai Institute of Technology, with the ambition to blend logic, design, and innovation into useful digital products.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Hero Stat Row with Count-Up -->
+        <div class="hero-stat-row">
+          <div class="stat-item">
+            <div class="stat-num-wrap">
+              <span class="stat-number" data-target="3">0</span>
+            </div>
+            <span class="stat-label">Core Languages</span>
+            <span class="stat-detail">C, Python, MySQL</span>
+          </div>
+
+          <div class="stat-item">
+            <div class="stat-num-wrap">
+              <span class="stat-number" data-target="13">0</span>
+              <span class="stat-plus">+</span>
+            </div>
+            <span class="stat-label">Starter Builds</span>
+            <span class="stat-detail">Game logic, simulations & databases</span>
+          </div>
+
+          <div class="stat-item">
+            <div class="stat-num-wrap">
+              <span class="stat-number" data-target="3">0</span>
+            </div>
+            <span class="stat-label">Awards & Milestones</span>
+            <span class="stat-detail">World records & competitive honors</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION DIVIDER -->
+    <div class="container">
+      <div class="editorial-divider"></div>
+    </div>
+
+    <!-- 3. WHAT I DO (SKILLS: 5 CARDS IN A ROW) -->
+    <section id="skills" class="section">
+      <div class="container">
+        
+        <div class="section-header">
+          <div class="label-tag">
+            <span class="status-dot"></span>
+            <span>CAPABILITIES & FOUNDATIONS</span>
+          </div>
+          <div class="section-title-wrap">
+            <h2 class="section-title">WHAT I DO</h2>
+            <div class="section-underline"></div>
+          </div>
+          <p class="section-subtitle">
+            Core competencies engineered with methodical problem-solving, clean code hygiene, and curiosity.
+          </p>
+        </div>
+
+        <div class="skills-grid">
+          
+          <!-- Card 1: C & C++ -->
+          <article class="skill-card">
+            <div class="skill-card-top">
+              <span class="skill-card-num">01 / LOGIC</span>
+              <div class="skill-icon-wrap" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="16 18 22 12 16 6"></polyline>
+                  <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>
+              </div>
+            </div>
+            <h3 class="skill-card-title">C & C++</h3>
+            <p class="skill-card-desc">
+              Core programming logic, syntax, memory fundamentals, and structured problem-solving through console-driven engineering.
+            </p>
+          </article>
+
+          <!-- Card 2: Python Basics -->
+          <article class="skill-card">
+            <div class="skill-card-top">
+              <span class="skill-card-num">02 / SCRIPT</span>
+              <div class="skill-icon-wrap" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                  <path d="M2 17l10 5 10-5"></path>
+                  <path d="M2 12l10 5 10-5"></path>
+                </svg>
+              </div>
+            </div>
+            <h3 class="skill-card-title">Python Basics</h3>
+            <p class="skill-card-desc">
+              Clean beginner-level scripts, control loops, functions, and mathematical simulations with readability at the core.
+            </p>
+          </article>
+
+          <!-- Card 3: MySQL Basics -->
+          <article class="skill-card">
+            <div class="skill-card-top">
+              <span class="skill-card-num">03 / DATA</span>
+              <div class="skill-icon-wrap" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                  <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                  <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                </svg>
+              </div>
+            </div>
+            <h3 class="skill-card-title">MySQL Basics</h3>
+            <p class="skill-card-desc">
+              Relational schemas, primary keys, structured queries, filtering aggregations, and practical entity-relationship design.
+            </p>
+          </article>
+
+          <!-- Card 4: GitHub + VS Code -->
+          <article class="skill-card">
+            <div class="skill-card-top">
+              <span class="skill-card-num">04 / WORKFLOW</span>
+              <div class="skill-icon-wrap" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="18" cy="18" r="3"></circle>
+                  <circle cx="6" cy="6" r="3"></circle>
+                  <path d="M13 6h3a2 2 0 0 1 2 2v7"></path>
+                  <line x1="6" y1="9" x2="6" y2="21"></line>
+                </svg>
+              </div>
+            </div>
+            <h3 class="skill-card-title">GitHub + VS Code</h3>
+            <p class="skill-card-desc">
+              Version control, branches, remote repositories, markdown documentation, and an organized everyday developer workflow.
+            </p>
+          </article>
+
+          <!-- Card 5: Learning Mode -->
+          <article class="skill-card">
+            <div class="skill-card-top">
+              <span class="skill-card-num">05 / FUTURE</span>
+              <div class="skill-icon-wrap" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+                </svg>
+              </div>
+            </div>
+            <h3 class="skill-card-title">Learning Mode</h3>
+            <p class="skill-card-desc">
+              Actively expanding into cybersecurity architecture, product management methodologies, and product-based engineering.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION DIVIDER -->
+    <div class="container">
+      <div class="editorial-divider"></div>
+    </div>
+
+    <!-- 4. DENSE EDITORIAL SPLIT SECTION: MY PROCESS & FEATURED WORK -->
+    <section id="process" class="section">
+      <div class="container">
+        
+        <div class="split-editorial-grid">
+          
+          <!-- LEFT: MY PROCESS -->
+          <div class="process-column">
+            <div class="section-header">
+              <div class="label-tag">
+                <span class="status-dot"></span>
+                <span>METHODOLOGY</span>
+              </div>
+              <div class="section-title-wrap">
+                <h2 class="section-title">MY PROCESS</h2>
+                <div class="section-underline"></div>
+              </div>
+              <p class="section-subtitle">
+                A repetitive cycle of exploration, iterative coding, stress-testing, and polish.
+              </p>
+            </div>
+
+            <!-- PROCESS STEPS: EDITABLE -->
+            <div class="process-timeline">
+              <div class="process-track-bg"></div>
+              <div class="process-track-fill"></div>
+
+              <!-- Step 01 -->
+              <div class="process-step">
+                <div class="process-marker">01</div>
+                <div class="process-step-title-wrap">
+                  <h3 class="process-step-title">Learn</h3>
+                  <svg class="process-step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                  </svg>
+                </div>
+                <p class="process-step-desc">
+                  Grasping core computational foundations, syntactic rules, and system logic prior to writing a single line.
+                </p>
+              </div>
+
+              <!-- Step 02 -->
+              <div class="process-step">
+                <div class="process-marker">02</div>
+                <div class="process-step-title-wrap">
+                  <h3 class="process-step-title">Practice</h3>
+                  <svg class="process-step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                  </svg>
+                </div>
+                <p class="process-step-desc">
+                  Writing deliberate snippets, algorithm drills, and daily logic exercises to build muscle memory.
+                </p>
+              </div>
+
+              <!-- Step 03 -->
+              <div class="process-step">
+                <div class="process-marker">03</div>
+                <div class="process-step-title-wrap">
+                  <h3 class="process-step-title">Build</h3>
+                  <svg class="process-step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                  </svg>
+                </div>
+                <p class="process-step-desc">
+                  Translating theoretical knowledge into functioning terminal games, database schemas, and structured programs.
+                </p>
+              </div>
+
+              <!-- Step 04 -->
+              <div class="process-step">
+                <div class="process-marker">04</div>
+                <div class="process-step-title-wrap">
+                  <h3 class="process-step-title">Break & Fix</h3>
+                  <svg class="process-step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                  </svg>
+                </div>
+                <p class="process-step-desc">
+                  Stress-testing edge cases, tracking segmentation bugs, and fixing logical edge-cases under pressure.
+                </p>
+              </div>
+
+              <!-- Step 05 -->
+              <div class="process-step">
+                <div class="process-marker">05</div>
+                <div class="process-step-title-wrap">
+                  <h3 class="process-step-title">Improve</h3>
+                  <svg class="process-step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                    <polyline points="17 6 23 6 23 12"></polyline>
+                  </svg>
+                </div>
+                <p class="process-step-desc">
+                  Refactoring code for clarity, documenting schemas, optimizing execution paths, and learning from each run.
+                </p>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- RIGHT: FEATURED WORK (2x2 GRID) -->
+          <div id="work" class="work-column">
+            <div class="work-header-wrap">
+              <div>
+                <div class="label-tag">
+                  <span class="status-dot"></span>
+                  <span>STARTER BUILDS</span>
+                </div>
+                <h2 class="section-title">FEATURED WORK</h2>
+                <div class="section-underline"></div>
+              </div>
+              <a href="https://github.com/CoderTan06/" target="_blank" rel="noopener noreferrer" class="view-more-link">
+                <span>View all repositories</span>
+                <span aria-hidden="true">→</span>
+              </a>
+            </div>
+
+            <div class="work-grid">
+              
+              <!-- Card 1: C Game Logic -->
+              <article class="project-card" data-project-id="c">
+                <div class="project-screen" aria-hidden="true">
+                  <div class="screen-header">
+                    <div class="screen-dots">
+                      <span class="screen-dot dot-red"></span>
+                      <span class="screen-dot dot-yellow"></span>
+                      <span class="screen-dot dot-green"></span>
+                    </div>
+                    <span class="screen-tab">game_engine.c</span>
+                  </div>
+                  <pre class="screen-code"><code><span class="code-keyword">#include</span> &lt;stdio.h&gt;
+<span class="code-keyword">int</span> <span class="code-fn">rollDice</span>() {
+  <span class="code-keyword">return</span> (rand() % 6) + 1;
+}
+<span class="code-comment">// 5 interactive builds</span></code></pre>
+                </div>
+
+                <div class="project-info">
+                  <span class="project-category">C / SYSTEM LOGIC</span>
+                  <h3 class="project-title">C: Game Logic Builds</h3>
+                </div>
+
+                <div class="project-click-hint">
+                  <span>Contains 5 Builds</span>
+                  <svg class="project-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </div>
+              </article>
+
+              <!-- Card 2: Python Game Logic & Simulation -->
+              <article class="project-card" data-project-id="python">
+                <div class="project-screen" aria-hidden="true">
+                  <div class="screen-header">
+                    <div class="screen-dots">
+                      <span class="screen-dot dot-red"></span>
+                      <span class="screen-dot dot-yellow"></span>
+                      <span class="screen-dot dot-green"></span>
+                    </div>
+                    <span class="screen-tab">simulation.py</span>
+                  </div>
+                  <pre class="screen-code"><code><span class="code-keyword">import</span> random
+<span class="code-keyword">def</span> <span class="code-fn">coin_toss</span>():
+  <span class="code-keyword">return</span> random.choice(
+    [<span class="code-str">"Heads"</span>, <span class="code-str">"Tails"</span>]
+  )
+<span class="code-comment">// 5 simulation builds</span></code></pre>
+                </div>
+
+                <div class="project-info">
+                  <span class="project-category">PYTHON / SIMULATION</span>
+                  <h3 class="project-title">Python: Simulation Builds</h3>
+                </div>
+
+                <div class="project-click-hint">
+                  <span>Contains 5 Builds</span>
+                  <svg class="project-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </div>
+              </article>
+
+              <!-- Card 3: MySQL Database Management -->
+              <article class="project-card" data-project-id="mysql">
+                <div class="project-screen" aria-hidden="true">
+                  <div class="screen-header">
+                    <div class="screen-dots">
+                      <span class="screen-dot dot-red"></span>
+                      <span class="screen-dot dot-yellow"></span>
+                      <span class="screen-dot dot-green"></span>
+                    </div>
+                    <span class="screen-tab">schema.sql</span>
+                  </div>
+                  <pre class="screen-code"><code><span class="code-keyword">SELECT</span> name, gpa
+<span class="code-keyword">FROM</span> cit_students
+<span class="code-keyword">WHERE</span> status = <span class="code-str">'Active'</span>
+<span class="code-keyword">ORDER BY</span> gpa <span class="code-keyword">DESC</span>;
+<span class="code-comment">// 3 relational schemas</span></code></pre>
+                </div>
+
+                <div class="project-info">
+                  <span class="project-category">MYSQL / DATABASES</span>
+                  <h3 class="project-title">MySQL: DB Management</h3>
+                </div>
+
+                <div class="project-click-hint">
+                  <span>Contains 3 Builds</span>
+                  <svg class="project-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </div>
+              </article>
+
+              <!-- Card 4: Quote / More Coming Soon -->
+              <article class="project-card quote-work-card">
+                <div class="quote-card-header">
+                  <span class="label-tag">MORE COMING SOON</span>
+                  <span class="status-dot"></span>
+                </div>
+                <p class="quote-quote-text">
+                  "Small steps in code become big leaps in possibility."
+                </p>
+                <div class="quote-card-footer">
+                  <span>NEXT: NETWORK SECURITY AUDIT & CLOUD APIS</span>
+                </div>
+              </article>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION DIVIDER -->
+    <div class="container">
+      <div class="editorial-divider"></div>
+    </div>
+
+    <!-- 5. ACHIEVEMENTS (CINEMATIC HORIZONTAL GALLERY) -->
+    <section id="achievements" class="section achievements-section">
+      <div class="container">
+        
+        <div class="section-header">
+          <div class="label-tag">
+            <span class="status-dot"></span>
+            <span>HONORS & RECOGNITION</span>
+          </div>
+          <div class="section-title-wrap">
+            <h2 class="section-title">ACHIEVEMENTS</h2>
+            <div class="section-underline"></div>
+          </div>
+          <p class="section-subtitle">
+            Notable milestones, competitive accomplishments, and record-setting collaborative events.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="horizontal-scroll-wrapper">
+        <div class="horizontal-track">
+          
+          <!-- Achievement 1: Guinness World Record -->
+          <article class="achievement-card">
+            <div class="achievement-card-header">
+              <span class="achievement-counter">01</span>
+              <span class="achievement-date">WORLD RECORD PARTICIPANT</span>
+            </div>
+            
+            <h3 class="achievement-title">Largest Human Image of a Rocket</h3>
+            <p class="achievement-desc">
+              Officially recognized Guinness World Record participant for forming the world's largest human image of an aerospace rocket. A testament to immense coordination, collective discipline, and collaborative execution.
+            </p>
+
+            <div class="achievement-images-grid">
+              <div class="achievement-img-wrap">
+                <img src="./assets/img/guinness-1.jpg" alt="Guinness World Record Rocket formation document" class="achievement-img" loading="lazy">
+              </div>
+              <div class="achievement-img-wrap">
+                <img src="./assets/img/guinness-2.jpg" alt="Guinness World Record event photograph" class="achievement-img" loading="lazy">
+              </div>
+            </div>
+          </article>
+
+          <!-- Achievement 2: Excellence in Co-curricular Activities -->
+          <article class="achievement-card">
+            <div class="achievement-card-header">
+              <span class="achievement-counter">02</span>
+              <span class="achievement-date">4-TIME WINNER · 2025–2026</span>
+            </div>
+
+            <h3 class="achievement-title">Excellence in Co-curricular Activities</h3>
+            <p class="achievement-desc">
+              Secured 4-time consecutive honors across competitive co-curricular challenges, celebrating multidisciplinary excellence across logic, leadership, debate, and collaborative technical initiatives.
+            </p>
+
+            <div class="achievement-images-grid">
+              <div class="achievement-img-wrap">
+                <img src="./assets/img/excellence-1.jpg" alt="Excellence award trophy and certificate" class="achievement-img" loading="lazy">
+              </div>
+              <div class="achievement-img-wrap">
+                <img src="./assets/img/excellence-2.jpg" alt="Award presentation ceremony photo" class="achievement-img" loading="lazy">
+              </div>
+            </div>
+          </article>
+
+          <!-- Achievement 3: Sustainable Home -->
+          <article class="achievement-card">
+            <div class="achievement-card-header">
+              <span class="achievement-counter">03</span>
+              <span class="achievement-date">1ST POSITION · SUPER SENIOR</span>
+            </div>
+
+            <h3 class="achievement-title">Sustainable Home, Super Senior</h3>
+            <p class="achievement-desc">
+              Awarded 1st place in the Super Senior engineering category for designing a sustainable, eco-conscious model that integrates self-sufficient resource conservation, clean energy systems, and modular smart housing.
+            </p>
+
+            <div class="achievement-images-grid">
+              <div class="achievement-img-wrap">
+                <img src="./assets/img/sustainable-1.jpg" alt="Sustainable Home model exhibition" class="achievement-img" loading="lazy">
+              </div>
+              <div class="achievement-img-wrap">
+                <img src="./assets/img/sustainable-2.jpg" alt="Sustainable Home presentation award certificate" class="achievement-img" loading="lazy">
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <div class="container">
+        <p class="achievements-footer-line">
+          This is not it! To see more of my wins, find me on 
+          <a href="https://www.linkedin.com/in/tanya-singh-0577972b0" target="_blank" rel="noopener noreferrer" class="linkedin-more-link">
+            LinkedIn <span aria-hidden="true">→</span>
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <!-- SECTION DIVIDER -->
+    <div class="container">
+      <div class="editorial-divider"></div>
+    </div>
+
+    <!-- 6. ABOUT ME SECTION -->
+    <section id="about" class="section about-section">
+      <div class="container">
+        
+        <div class="about-grid">
+          
+          <!-- Small Portrait Card -->
+          <div class="about-portrait-card">
+            <div class="about-portrait-frame">
+              <img src="./assets/img/portrait.jpg" alt="Tanya Singh portrait" class="about-portrait-img" loading="lazy">
+            </div>
+            <div class="about-portrait-badge">
+              <span class="badge-inst">CIT CHENNAI</span>
+              <span class="badge-tag">CSE ASPIRANT</span>
+            </div>
+          </div>
+
+          <!-- Editorial Text & Bullets -->
+          <div class="about-content">
+            <div class="section-header" style="margin-bottom: 1.5rem;">
+              <div class="label-tag">
+                <span class="status-dot"></span>
+                <span>BIOGRAPHY & VISION</span>
+              </div>
+              <div class="section-title-wrap">
+                <h2 class="section-title">ABOUT ME</h2>
+                <div class="section-underline"></div>
+              </div>
+            </div>
+
+            <p class="about-lead">
+              I am <strong>Tanya Singh</strong>, a future Computer Science Engineering student passionate about building clean, modern digital experiences. I enjoy exploring programming fundamentals, database systems, and AI-powered tools. I am highly willing to learn and grow in fields like cybersecurity, product management, and product-based engineering. My goal is to become a versatile engineer who blends logic, design, and innovation.
+            </p>
+
+            <div class="about-bullets-grid">
+              <div class="about-bullet-pill">
+                <span class="bullet-star">✦</span>
+                <span>Logic-driven</span>
+              </div>
+              <div class="about-bullet-pill">
+                <span class="bullet-star">✦</span>
+                <span>Quick learner</span>
+              </div>
+              <div class="about-bullet-pill">
+                <span class="bullet-star">✦</span>
+                <span>Design-minded</span>
+              </div>
+              <div class="about-bullet-pill">
+                <span class="bullet-star">✦</span>
+                <span>Always building</span>
+              </div>
+            </div>
+
+            <div class="about-info-block">
+              <div class="info-item">
+                <span class="info-label">Institution</span>
+                <span class="info-val">Chennai Institute of Technology (CIT, Chennai)</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Department</span>
+                <span class="info-val">Computer Science Engineering</span>
+              </div>
+              <div class="info-item full-width">
+                <span class="info-label">Long-Term Ambition</span>
+                <span class="info-val">Build thoughtful digital products with strong technical foundations and a security-aware mindset.</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- TOOLS I USE & QUOTE -->
+        <div class="tools-quote-grid">
+          
+          <!-- Tools Panel -->
+          <div class="tools-panel">
+            <div class="tools-panel-header">
+              <div class="label-tag">
+                <span class="status-dot"></span>
+                <span>STACK & WORKSPACE</span>
+              </div>
+              <h3 class="skill-card-title" style="margin-top: 0.5rem;">TOOLS I USE</h3>
+            </div>
+
+            <!-- Icon Tiles -->
+            <div class="tools-tiles-row">
+              
+              <!-- C / C++ -->
+              <div class="tool-tile">
+                <svg class="tool-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M16 18l6-6-6-6"></path>
+                  <path d="M8 6l-6 6 6 6"></path>
+                  <line x1="12" y1="8" x2="12" y2="16"></line>
+                </svg>
+                <span class="tool-name">C / C++</span>
+              </div>
+
+              <!-- Python -->
+              <div class="tool-tile">
+                <svg class="tool-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M12 2a5 5 0 0 0-5 5v3H4a2 2 0 0 0-2 2v2a5 5 0 0 0 5 5h1v-2a3 3 0 0 1 3-3h4a2 2 0 0 0 2-2V7a5 5 0 0 0-5-5z"></path>
+                  <path d="M12 22a5 5 0 0 0 5-5v-3h3a2 2 0 0 0 2-2v-2a5 5 0 0 0-5-5h-1v2a3 3 0 0 1-3 3h-4a2 2 0 0 0-2 2v5a5 5 0 0 0 5 5z"></path>
+                </svg>
+                <span class="tool-name">Python</span>
+              </div>
+
+              <!-- MySQL -->
+              <div class="tool-tile">
+                <svg class="tool-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                  <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                  <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                </svg>
+                <span class="tool-name">MySQL</span>
+              </div>
+
+              <!-- GitHub -->
+              <div class="tool-tile">
+                <svg class="tool-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                <span class="tool-name">GitHub</span>
+              </div>
+
+              <!-- VS Code -->
+              <div class="tool-tile">
+                <svg class="tool-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <polyline points="4 17 10 11 4 5"></polyline>
+                  <line x1="12" y1="19" x2="20" y2="19"></line>
+                </svg>
+                <span class="tool-name">VS Code</span>
+              </div>
+
+            </div>
+
+            <!-- Continuous Marquee with Velocity Skew -->
+            <div class="tools-marquee-container" aria-hidden="true">
+              <div class="tools-marquee-track">
+                <div class="marquee-item"><span>C PROGRAMMING</span> <span class="marquee-dot">✦</span></div>
+                <div class="marquee-item"><span>PYTHON 3</span> <span class="marquee-dot">✦</span></div>
+                <div class="marquee-item"><span>MYSQL RELATIONAL DATA</span> <span class="marquee-dot">✦</span></div>
+                <div class="marquee-item"><span>GIT VERSION CONTROL</span> <span class="marquee-dot">✦</span></div>
+                <div class="marquee-item"><span>VS CODE WORKFLOW</span> <span class="marquee-dot">✦</span></div>
+                <div class="marquee-item"><span>ALGORITHM LOGIC</span> <span class="marquee-dot">✦</span></div>
+                <div class="marquee-item"><span>CYBERSECURITY EXPLORATION</span> <span class="marquee-dot">✦</span></div>
+                <!-- Duplicate for infinite seamless scroll -->
+                <div class="marquee-item"><span>C PROGRAMMING</span> <span class="marquee-dot">✦</span></div>
+                <div class="marquee-item"><span>PYTHON 3</span> <span class="marquee-dot">✦</span></div>
+                <div class="marquee-item"><span>MYSQL RELATIONAL DATA</span> <span class="marquee-dot">✦</span></div>
+                <div class="marquee-item"><span>GIT VERSION CONTROL</span> <span class="marquee-dot">✦</span></div>
+                <div class="marquee-item"><span>VS CODE WORKFLOW</span> <span class="marquee-dot">✦</span></div>
+                <div class="marquee-item"><span>ALGORITHM LOGIC</span> <span class="marquee-dot">✦</span></div>
+                <div class="marquee-item"><span>CYBERSECURITY EXPLORATION</span> <span class="marquee-dot">✦</span></div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Quote Card (Replaces Client Testimonial) -->
+          <div class="quote-card-aside">
+            <span class="quote-icon-large" aria-hidden="true">“</span>
+            <p class="quote-statement">
+              "Small steps in code become big leaps in possibility."
+            </p>
+            <div class="quote-author-info">
+              <span class="quote-author-name">TANYA SINGH</span>
+              <span class="quote-author-role">ENGINEERING ASPIRANT</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION DIVIDER -->
+    <div class="container">
+      <div class="editorial-divider"></div>
+    </div>
+
+    <!-- 7. LET'S COLLABORATE (FOOTER BLOCK) -->
+    <section id="contact" class="section contact-section">
+      <div class="container">
+        
+        <div class="section-header" style="margin-bottom: 2rem;">
+          <div class="label-tag">
+            <span class="status-dot"></span>
+            <span>GET IN TOUCH</span>
+          </div>
+        </div>
+
+        <!-- Kinetic Word-by-Word Reveal Headline -->
+        <h2 class="contact-headline-reveal">
+          <span class="word"><span class="word-inner">LET’S</span></span>
+          <span class="word"><span class="word-inner">CONNECT</span></span>
+          <span class="word"><span class="word-inner">&amp;</span></span>
+          <span class="word"><span class="word-inner">BUILD</span></span>
+          <span class="word"><span class="word-inner">SOMETHING</span></span>
+          <span class="word"><span class="word-inner">MEANINGFUL.</span></span>
+        </h2>
+
+        <div class="contact-grid">
+          
+          <!-- Left Column: Direct Links & Cream QR Tiles -->
+          <div class="contact-info-col">
+            
+            <div class="contact-channels">
+              
+              <!-- Email -->
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=tech.tan06%40gmail.com&su=Let%27s%20connect" target="_blank" rel="noopener noreferrer" class="channel-card">
+                <svg class="channel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <div class="channel-texts">
+                  <span class="channel-label">Direct Email</span>
+                  <span class="channel-value">tech.tan06@gmail.com</span>
+                </div>
+              </a>
+
+              <!-- Location -->
+              <div class="channel-card">
+                <svg class="channel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <div class="channel-texts">
+                  <span class="channel-label">Location</span>
+                  <span class="channel-value">Chennai, India</span>
+                </div>
+              </div>
+
+              <!-- LinkedIn -->
+              <a href="https://www.linkedin.com/in/tanya-singh-0577972b0" target="_blank" rel="noopener noreferrer" class="channel-card">
+                <svg class="channel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                  <rect x="2" y="9" width="4" height="12"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+                <div class="channel-texts">
+                  <span class="channel-label">LinkedIn Profile</span>
+                  <span class="channel-value">linkedin.com/in/tanya-singh</span>
+                </div>
+              </a>
+
+              <!-- GitHub -->
+              <a href="https://github.com/CoderTan06/" target="_blank" rel="noopener noreferrer" class="channel-card">
+                <svg class="channel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                <div class="channel-texts">
+                  <span class="channel-label">GitHub Repositories</span>
+                  <span class="channel-value">github.com/CoderTan06</span>
+                </div>
+              </a>
+
+            </div>
+
+            <!-- SCAN TO CONNECT (2 Cream QR Tiles) -->
+            <div class="qr-connect-block">
+              <h3 class="qr-heading">SCAN TO CONNECT</h3>
+              
+              <div class="qr-tiles-row">
+                
+                <!-- LinkedIn QR Tile -->
+                <a href="https://www.linkedin.com/in/tanya-singh-0577972b0" target="_blank" rel="noopener noreferrer" class="qr-tile" title="Scan to open LinkedIn">
+                  <div class="qr-image-wrap">
+                    <img src="./assets/img/qr-linkedin.svg" alt="Scan QR code for Tanya Singh LinkedIn" class="qr-image">
+                  </div>
+                  <span class="qr-tile-label">LINKEDIN</span>
+                </a>
+
+                <!-- GitHub QR Tile -->
+                <a href="https://github.com/CoderTan06/" target="_blank" rel="noopener noreferrer" class="qr-tile" title="Scan to open GitHub">
+                  <div class="qr-image-wrap">
+                    <img src="./assets/img/qr-github.svg" alt="Scan QR code for Tanya Singh GitHub" class="qr-image">
+                  </div>
+                  <span class="qr-tile-label">GITHUB</span>
+                </a>
+
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Contact Form -->
+          <div class="contact-form-col">
+            <h3 class="form-title">SEND A MESSAGE</h3>
+            <p class="form-subtitle">Open for academic collaboration, project discussions, or engineering inquiries.</p>
+
+            <form id="contactForm" class="portfolio-form" action="#" method="POST">
+              <div class="form-group">
+                <label for="formName" class="form-label">Your Name</label>
+                <input type="text" id="formName" name="name" class="form-input" placeholder="e.g. Alex Morgan" required>
+              </div>
+
+              <div class="form-group">
+                <label for="formEmail" class="form-label">Email Address</label>
+                <input type="email" id="formEmail" name="email" class="form-input" placeholder="alex@domain.com" required>
+              </div>
+
+              <div class="form-group">
+                <label for="formSubject" class="form-label">Subject</label>
+                <input type="text" id="formSubject" name="subject" class="form-input" placeholder="Academic / Collaboration inquiry" required>
+              </div>
+
+              <div class="form-group">
+                <label for="formMessage" class="form-label">Message</label>
+                <textarea id="formMessage" name="message" class="form-textarea" placeholder="Write your note or idea here..." required></textarea>
+              </div>
+
+              <button type="submit" class="form-submit-btn magnetic-target">
+                <span>Send Message</span>
+                <span aria-hidden="true">→</span>
+              </button>
+
+              <!-- Exact requested success feedback state -->
+              <div id="formSuccessBanner" class="form-success-banner" role="status" aria-live="polite">
+                Message received. Thank you for reaching out. Tanya will reply as soon as possible.
+              </div>
+            </form>
+          </div>
+
+        </div>
+
+        <!-- Closing Tagline & Signature Flourish -->
+        <div class="closing-block">
+          <p class="closing-tagline">Learn. Build. Improve.</p>
+          <svg class="signature-flourish" viewBox="0 0 140 40" aria-hidden="true">
+            <path d="M 10 25 Q 35 5, 70 20 T 130 15 Q 110 35, 60 30" stroke-width="1.8" stroke-linecap="round"></path>
+          </svg>
+        </div>
+
+        <!-- Footer Bottom Bar -->
+        <footer class="footer-bottom-bar">
+          <div class="footer-studios">
+            <span>TanzStudios Co. · design · code · create</span>
+          </div>
+
+          <div class="footer-copyright">
+            <span>&copy; 2025 Tanya Singh · Future engineer in progress</span>
+          </div>
+
+          <button id="backToTopBtn" class="back-to-top-btn magnetic-target" aria-label="Scroll back to top">
+            <span>Back to top</span>
+            <span aria-hidden="true">↑</span>
+          </button>
+        </footer>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 8. INTERACTIVE PROJECT MODAL (EXPANDABLE BUILDS VIEW) -->
+  <div id="projectModal" class="project-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-backdrop"></div>
+    <div class="modal-container">
+      <button id="modalCloseBtn" class="modal-close-btn" aria-label="Close dialog">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div id="modalCategory" class="modal-badge">CATEGORY</div>
+      <h3 id="modalTitle" class="modal-title">PROJECT TITLE</h3>
+      <p id="modalDesc" class="skill-card-desc">Detailed project description goes here.</p>
+
+      <div id="modalBuildsList" class="modal-builds-list">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- CDN Scripts: GSAP + ScrollTrigger, Lenis Smooth Scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+
+  <!-- Main ES Module Script -->
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>
