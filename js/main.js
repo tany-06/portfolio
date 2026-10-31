@@ -116,20 +116,20 @@ function triggerHeroReveal() {
   if (chars.length > 0) {
     gsap.to(chars, {
       y: '0%',
-      stagger: 0.03,
-      duration: 0.9,
+      stagger: 0.04,
+      duration: 1.1,
       ease: 'power4.out'
     });
   }
 
   gsap.fromTo('.hero-portrait-wrapper', 
-    { scale: 0.9, opacity: 0, y: 20 },
-    { scale: 1, opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 0.1 }
+    { scale: 0.85, opacity: 0, y: 30 },
+    { scale: 1, opacity: 1, y: 0, duration: 1.2, ease: 'power3.out', delay: 0.2 }
   );
 
   gsap.fromTo(['.hero-left-col', '.hero-right-col', '.hero-top-bar'],
-    { opacity: 0, y: 20 },
-    { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out', delay: 0.2 }
+    { opacity: 0, y: 25 },
+    { opacity: 1, y: 0, duration: 1, stagger: 0.15, ease: 'power3.out', delay: 0.4 }
   );
 }
 
@@ -258,21 +258,6 @@ function initNavigation(lenis) {
       }
     });
   });
-
-  // Handle direct hash navigation on load
-  if (window.location.hash) {
-    const targetEl = document.querySelector(window.location.hash);
-    if (targetEl) {
-      setTimeout(() => {
-        if (lenis) {
-          lenis.scrollTo(targetEl, { offset: -70, immediate: true });
-        } else {
-          targetEl.scrollIntoView();
-        }
-        ScrollTrigger.refresh();
-      }, 200);
-    }
-  }
 
   // Active section indicator
   const sections = document.querySelectorAll('section[id]');
