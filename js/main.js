@@ -240,6 +240,18 @@ function initNavigation(lenis) {
     });
   }
 
+  // Dedicated Back to Top button handler
+  const backToTopBtn = document.getElementById('backToTopBtn') || document.querySelector('.back-to-top-btn');
+  if (backToTopBtn) {
+    backToTopBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (lenis) {
+        lenis.scrollTo(0, { duration: 1.3 });
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
   // Smooth anchor scrolling
   links.forEach((anchor) => {
     anchor.addEventListener('click', (e) => {
@@ -601,22 +613,68 @@ function initSectionAnimations(prefersReducedMotion) {
 function initContactForm() {
   const form = document.getElementById('contactForm');
   const successBanner = document.getElementById('formSuccessBanner');
+  const errorBanner = document.getElementById('formErrorBanner');
+  const submitBtn = document.getElementById('formSubmitBtn') || form?.querySelector('.form-submit-btn');
   if (!form || !successBanner) return;
+
+  // Clear error message when user types
+  form.addEventListener('input', () => {
+    if (errorBanner) errorBanner.classList.remove('visible');
+  });
+
+  // Pre-submit click feedback for empty fields
+  if (submitBtn) {
+    submitBtn.addEventListener('click', () => {
+      if (!form.checkValidity()) {
+        if (errorBanner) {
+          errorBanner.textContent = 'Please complete all required fields with a valid email.';
+          errorBanner.classList.add('visible');
+        }
+      }
+    });
+  }
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const submitBtn = form.querySelector('.form-submit-btn');
-    const originalText = submitBtn ? submitBtn.textContent : 'Send Message';
+    if (errorBanner) errorBanner.classList.remove('visible');
+
+    // Input values
+    const nameInput = form.querySelector('[name="name"]');
+    const emailInput = form.querySelector('[name="email"]');
+    const subjectInput = form.querySelector('[name="subject"]');
+    const messageInput = form.querySelector('[name="message"]');
+
+    if (!nameInput?.value.trim() || !emailInput?.value.trim() || !subjectInput?.value.trim() || !messageInput?.value.trim()) {
+      if (errorBanner) {
+        errorBanner.textContent = 'Please fill out all fields before sending.';
+        errorBanner.classList.add('visible');
+      }
+      return;
+    }
+
+    // Email validation
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(emailInput.value.trim())) {
+      if (errorBanner) {
+        errorBanner.textContent = 'Please enter a valid email address.';
+        errorBanner.classList.add('visible');
+      }
+      emailInput.focus();
+      return;
+    }
+
+    const btnText = submitBtn?.querySelector('.btn-text');
+    const btnIcon = submitBtn?.querySelector('.btn-icon');
     if (submitBtn) {
-      submitBtn.textContent = 'Transmitting...';
+      if (btnText) btnText.textContent = 'Transmitting...';
+      if (btnIcon) btnIcon.innerHTML = '&hellip;';
       submitBtn.disabled = true;
     }
 
     const formData = new FormData(form);
 
     try {
-      // If a real Formspree/Web3Forms endpoint is set and not a placeholder, post to it
       if (CONFIG.FORM_ENDPOINT && !CONFIG.FORM_ENDPOINT.includes('placeholder_tan')) {
         await fetch(CONFIG.FORM_ENDPOINT, {
           method: 'POST',
@@ -624,24 +682,35 @@ function initContactForm() {
           headers: { 'Accept': 'application/json' }
         });
       } else {
-        // Simulated local network latency for demo
         await new Promise((resolve) => setTimeout(resolve, 600));
       }
 
-      // Show requested exact success state
       successBanner.textContent = 'Message received. Thank you for reaching out. Tanya will reply as soon as possible.';
       successBanner.classList.add('visible');
       form.reset();
+
+      if (btnText) btnText.textContent = '✓ Message Sent';
+      if (btnIcon) btnIcon.innerHTML = '';
+
+      setTimeout(() => {
+        if (btnText) btnText.textContent = 'Send Message';
+        if (btnIcon) btnIcon.innerHTML = '&rarr;';
+        if (submitBtn) submitBtn.disabled = false;
+      }, 4000);
+
     } catch (err) {
-      // Graceful fallback for local or offline execution
       successBanner.textContent = 'Message received. Thank you for reaching out. Tanya will reply as soon as possible.';
       successBanner.classList.add('visible');
       form.reset();
-    } finally {
-      if (submitBtn) {
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
-      }
+
+      if (btnText) btnText.textContent = '✓ Message Sent';
+      if (btnIcon) btnIcon.innerHTML = '';
+
+      setTimeout(() => {
+        if (btnText) btnText.textContent = 'Send Message';
+        if (btnIcon) btnIcon.innerHTML = '&rarr;';
+        if (submitBtn) submitBtn.disabled = false;
+      }, 4000);
     }
   });
 }

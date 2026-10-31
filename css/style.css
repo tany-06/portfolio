@@ -2023,6 +2023,41 @@ body.cursor-hover .cursor-dot {
   display: block;
 }
 
+/* Form Error Banner */
+.form-error-banner {
+  display: none;
+  background: rgba(35, 12, 12, 0.9);
+  border: 1px solid var(--accent-crimson);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 1.15rem;
+  color: #ff6b6b;
+  font-size: 0.88rem;
+  margin-top: 1rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.form-error-banner.visible {
+  display: block;
+}
+
+.form-direct-note {
+  font-size: 0.82rem;
+  color: var(--color-subtle);
+  margin-top: 1.25rem;
+  text-align: center;
+}
+
+.form-direct-note a {
+  color: var(--color-cream);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--transition-fast);
+}
+
+.form-direct-note a:hover {
+  color: var(--accent-crimson);
+}
+
 /* Closing Tagline & Flourish */
 .closing-block {
   text-align: center;

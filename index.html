@@ -148,7 +148,7 @@
                 <path id="heroBadgePath" d="M 80, 80 m -62, 0 a 62,62 0 1,1 124,0 a 62,62 0 1,1 -124,0" fill="none" />
                 <text font-size="10.8" letter-spacing="2.8" fill="#efe3c9" font-family="'DM Sans', sans-serif" font-weight="600">
                   <textPath href="#heroBadgePath" startOffset="0%">
-                    ✦ TANYA SINGH ✦ CREATIVE DEVELOPER ✦ CIT 2025 ✦
+                    ✦ TANYA SINGH ✦ CREATIVE DEVELOPER ✦ CIT 2026 ✦
                   </textPath>
                 </text>
               </svg>
@@ -988,15 +988,25 @@
                 <textarea id="formMessage" name="message" class="form-textarea" placeholder="Write your note or idea here..." required></textarea>
               </div>
 
-              <button type="submit" class="form-submit-btn magnetic-target">
-                <span>Send Message</span>
-                <span aria-hidden="true">→</span>
+              <button type="submit" id="formSubmitBtn" class="form-submit-btn magnetic-target">
+                <span class="btn-text">Send Message</span>
+                <span class="btn-icon" aria-hidden="true">&rarr;</span>
               </button>
+
+              <!-- Form Validation Feedback Banner -->
+              <div id="formErrorBanner" class="form-error-banner" role="alert">
+                Please complete all required fields with a valid email.
+              </div>
 
               <!-- Exact requested success feedback state -->
               <div id="formSuccessBanner" class="form-success-banner" role="status" aria-live="polite">
                 Message received. Thank you for reaching out. Tanya will reply as soon as possible.
               </div>
+
+              <p class="form-direct-note">
+                Prefer direct email? 
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=tech.tan06%40gmail.com&su=Portfolio%20Inquiry" target="_blank" rel="noopener noreferrer">tech.tan06@gmail.com</a>
+              </p>
             </form>
           </div>
 
@@ -1013,16 +1023,16 @@
         <!-- Footer Bottom Bar -->
         <footer class="footer-bottom-bar">
           <div class="footer-studios">
-            <span>TanzStudios Co. · design · code · create</span>
+            <span>Tanya Singh</span>
           </div>
 
           <div class="footer-copyright">
-            <span>&copy; 2025 Tanya Singh · Future engineer in progress</span>
+            <span>&copy; 2026 Tanya Singh · Future engineer in progress</span>
           </div>
 
-          <button id="backToTopBtn" class="back-to-top-btn magnetic-target" aria-label="Scroll back to top">
+          <button id="backToTopBtn" type="button" class="back-to-top-btn magnetic-target" aria-label="Scroll back to top">
             <span>Back to top</span>
-            <span aria-hidden="true">↑</span>
+            <span aria-hidden="true">&uarr;</span>
           </button>
         </footer>
 
