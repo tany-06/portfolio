@@ -1,0 +1,8 @@
+# Node & Dev
+node_modules/
+.wrangler/
+worker/.wrangler/
+
+# System & OS
+.DS_Store
+Thumbs.db
