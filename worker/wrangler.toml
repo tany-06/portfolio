@@ -1,0 +1,8 @@
+name = "portfolio-contact"
+main = "index.js"
+compatibility_date = "2024-04-01"
+
+[vars]
+ALLOWED_ORIGIN = "https://codertan06.github.io"
+TO_EMAIL = "tech.tan06@gmail.com"
+SENDER_EMAIL = "REPLACE-WITH-VERIFIED-BREVO-SENDER"

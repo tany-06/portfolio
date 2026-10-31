@@ -1,18 +1,17 @@
 # Tanya Singh — Cinematic Editorial Portfolio
 
-A cinematic, award-level, single-page portfolio website for **Tanya Singh**, Computer Science Engineering Aspirant at Chennai Institute of Technology (CIT). Designed with an editorial poster layout, near-black (#0b0707) and deep oxblood/crimson (#8e1b1b) aesthetics, kinetic typography, and fluid GSAP + Lenis scroll choreography.
+A cinematic, award-level, single-page portfolio website for **Tanya Singh**, Computer Science Engineering Aspirant at Chennai Institute of Technology (CIT). Designed with an editorial poster layout, near-black (`#0b0707`) canvas with deep oxblood/crimson (`#8e1b1b` to `#c0392b`) accents, warm cream (`#efe3c9`) typography, kinetic GSAP + Lenis scroll choreography, and a real serverless contact form backend powered by Cloudflare Workers and Brevo.
 
 ---
 
 ## ⚡ Tech Stack
 
-- **HTML5 & CSS3**: Semantic markup, custom properties, responsive CSS grid/flexbox, SVG filters and ambient lighting effects.
-- **Vanilla ES Modules JavaScript**: Pure modern JavaScript without any bundler or build steps required.
-- **Animation & Motion**:
-  - [Lenis](https://github.com/darkroomengineering/lenis) (v1.1.14) for inertia-based smooth scrolling.
-  - [GSAP](https://gsap.com/) & [ScrollTrigger](https://gsap.com/scrolltrigger/) (v3.12.5) for parallax, masked text reveals, count-up stats, timeline progress, and horizontal gallery pinning.
-- **Typography**: Google Fonts (`Bebas Neue`, `Anton`, `Playfair Display`, `DM Sans`, `Inter`, `JetBrains Mono`).
-- **Deployment**: 100% static and zero-dependency build, ready for GitHub Pages or any static host.
+- **Front-End**: Semantic HTML5, modern CSS3 (custom variables, glassmorphic panels, noise grain, ambient glow effects), and vanilla ES modules JavaScript.
+- **Motion & Interactions**:
+  - [Lenis](https://github.com/darkroomengineering/lenis) (v1.1.14) for smooth inertia scroll.
+  - [GSAP](https://gsap.com/) & [ScrollTrigger](https://gsap.com/scrolltrigger/) (v3.12.5) for text splitting, parallax, horizontal achievement gallery pinning, count-up stats, and 3D card tilt.
+- **Serverless Backend**: [Cloudflare Workers](https://workers.cloudflare.com/) (`worker/index.js`) with input validation, honeypot anti-spam, strict CORS origin protection, IP rate limiting, and [Brevo SMTP API](https://www.brevo.com/) integration.
+- **CI/CD Workflows**: Official GitHub Actions for Pages (`deploy-pages.yml`) and Cloudflare Workers (`deploy-worker.yml`).
 
 ---
 
@@ -22,123 +21,128 @@ A cinematic, award-level, single-page portfolio website for **Tanya Singh**, Com
 tan/
 ├── .github/
 │   └── workflows/
-│       └── deploy.yml          # Automated GitHub Pages CI/CD workflow
+│       ├── deploy-pages.yml    # Deploys static site to GitHub Pages
+│       └── deploy-worker.yml   # Deploys Cloudflare Worker & syncs Brevo secret
 ├── assets/
 │   └── img/
-│       ├── portrait.jpg        # Hero portrait
+│       ├── portrait.png        # Transparent studio portrait (crimson rim-light)
+│       ├── portrait.jpg        # High-res raw studio portrait
 │       ├── guinness-1.jpg      # Guinness certificate
 │       ├── guinness-2.jpg      # Guinness rocket event photo
 │       ├── excellence-1.jpg    # Co-curricular awards trophy
 │       ├── excellence-2.jpg    # Co-curricular ceremony photo
 │       ├── sustainable-1.jpg   # Sustainable Home project model
 │       ├── sustainable-2.jpg   # Sustainable Home award photo
-│       ├── qr-linkedin.svg     # Cream vector QR tile for LinkedIn
-│       └── qr-github.svg       # Cream vector QR tile for GitHub
+│       ├── qr-linkedin.svg     # Vector cream tile QR code for LinkedIn
+│       └── qr-github.svg       # Vector cream tile QR code for GitHub
 ├── css/
-│   └── style.css               # Editorial poster styles, variables, transitions
+│   └── style.css               # Design system, glassmorphism, responsive styles
 ├── js/
-│   └── main.js                 # Lenis smooth scroll, GSAP timelines, tilt, modal
-├── .nojekyll                   # Ensures clean static asset serving on GitHub Pages
-├── README.md                   # Project documentation & configuration guide
-└── index.html                  # Accessible, single-page portfolio document
+│   └── main.js                 # Lenis, GSAP timelines, form validation, modals
+├── worker/
+│   ├── index.js                # Cloudflare Worker sending emails via Brevo
+│   └── wrangler.toml           # Worker configuration & environment vars
+├── .nojekyll                   # Bypasses Jekyll on GitHub Pages
+├── README.md                   # Setup guide & email backend deployment
+└── index.html                  # Accessible, semantic single-page document
 ```
 
 ---
 
-## 🚀 Local Development Setup
+## 📬 Real Email Delivery Setup (Brevo + Cloudflare Workers)
 
-To run and preview the portfolio locally:
+The contact form is configured to send real transactional emails directly to `tech.tan06@gmail.com` using a secure Cloudflare Worker and Brevo. **No API keys or secrets are ever exposed in the front end.**
 
-### Option A: Using Python (Recommended)
+Follow these steps to activate email delivery:
+
+### Step 1: Set up Brevo (Transactional Email)
+1. Sign up for a free account at [brevo.com](https://www.brevo.com/).
+2. Go to **Senders, Domains & Dedicated IPs** &rarr; **Senders** and verify your sender email (e.g. `your-name@yourdomain.com` or your personal email).
+3. Navigate to **SMTP & API** &rarr; **API Keys** and generate a new API key (e.g., `portfolio-contact-key`). Copy this key securely.
+
+### Step 2: Set up Cloudflare
+1. Sign up for a free account at [cloudflare.com](https://www.cloudflare.com/).
+2. Go to **My Profile** &rarr; **API Tokens** &rarr; **Create Token**.
+3. Select the **Edit Cloudflare Workers** template, or grant:
+   - *Account* &rarr; *Workers Scripts* &rarr; *Edit*
+   - *Account* &rarr; *Workers KV Storage* &rarr; *Edit*
+4. Copy the API Token and note your **Account ID** (found on the right sidebar of the Workers & Pages dashboard).
+
+### Step 3: Configure GitHub Repository Secrets
+In your GitHub repository:
+1. Navigate to **Settings** &rarr; **Secrets and variables** &rarr; **Actions**.
+2. Click **New repository secret** and add the following 3 secrets:
+   - `BREVO_API_KEY`: The Brevo API key created in Step 1.
+   - `CLOUDFLARE_API_TOKEN`: The Cloudflare API token created in Step 2.
+   - `CLOUDFLARE_ACCOUNT_ID`: Your Cloudflare account ID.
+
+### Step 4: Configure `worker/wrangler.toml` and Push
+Open `worker/wrangler.toml` and configure your verified sender and allowed domain:
+```toml
+name = "portfolio-contact"
+main = "index.js"
+compatibility_date = "2024-04-01"
+
+[vars]
+ALLOWED_ORIGIN = "https://codertan06.github.io"
+TO_EMAIL = "tech.tan06@gmail.com"
+SENDER_EMAIL = "your-verified-sender@example.com"
+```
+Commit and push to `main`:
 ```bash
-# In the project root directory:
+git add worker/wrangler.toml
+git commit -m "chore: configure worker sender email and allowed origin"
+git push origin main
+```
+The `.github/workflows/deploy-worker.yml` action will automatically deploy your Worker to Cloudflare and provision the `BREVO_API_KEY` secret.
+
+### Step 5: Update `FORM_ENDPOINT` in `js/main.js`
+1. After the deployment workflow finishes, check your Cloudflare dashboard for the Worker URL (typically `https://portfolio-contact.<subdomain>.workers.dev/send`).
+2. Open `js/main.js` and update the first line:
+   ```javascript
+   const FORM_ENDPOINT = "https://portfolio-contact.<your-subdomain>.workers.dev/send";
+   ```
+3. Commit and push again:
+   ```bash
+   git add js/main.js
+   git commit -m "feat: connect live Cloudflare Worker endpoint"
+   git push origin main
+   ```
+
+### Step 6: Test and Confirm
+1. Open your live site, scroll to the contact form, and send a test message.
+2. The form will show the confirmation banner upon successful delivery:
+   > *"Message received. Thank you for reaching out. Tanya will reply as soon as possible."*
+3. Check `tech.tan06@gmail.com` (and your spam folder) to confirm receipt of the formatted email.
+
+---
+
+## 🛡️ Form Security & Validation Features
+
+- **Anti-Spam Honeypot**: Hidden `website` input field. Any submission with this field filled is silently discarded with an HTTP 200 to confuse automated bots.
+- **Client & Server Input Constraints**:
+  - Name: 2–80 characters
+  - Email: Valid RFC 5322 regex format (max 120 chars)
+  - Subject: 2–120 characters
+  - Message: 10–2000 characters
+- **HTML Sanitization**: All incoming fields are escaped on the server side prior to embedding in the HTML email template to eliminate injection attacks.
+- **Rate Limiting**: Protects against spam by limiting each client IP address to a maximum of 3 submissions per 10-minute window (HTTP 429).
+- **Client Cooldown**: Enforces a 30-second client-side submission cooldown after a successful send.
+- **CORS Protection**: Enforces origin verification matching `env.ALLOWED_ORIGIN`, returning HTTP 403 to unauthorized domains.
+- **No False Positives**: If the endpoint fails or is unconfigured, the form displays:
+  > *"Couldn't send your message. Please email tech.tan06@gmail.com directly."*
+  and preserves the user's typed message in the fields.
+
+---
+
+## 💻 Local Development & Testing
+
+```bash
+# Serve the static website locally:
 python -m http.server 8080
+
+# In a separate terminal, test the Cloudflare Worker locally:
+cd worker
+npx wrangler dev
 ```
 Open `http://localhost:8080` in your web browser.
-
-### Option B: Using Node.js / npx
-```bash
-# Run a zero-install static server:
-npx serve .
-```
-
----
-
-## 📝 How to Edit Content
-
-### 1. Process Steps (Editable Framing Device)
-In `index.html`, locate the section marked with `<!-- PROCESS STEPS: EDITABLE -->`.
-You can update the titles (`Learn`, `Practice`, `Build`, `Break & Fix`, `Improve`) and their one-line descriptions directly inside the `.process-step` blocks.
-
-### 2. Featured Projects & Builds
-Project details, tags, and modal lists are stored inside `CONFIG.PROJECTS` in `js/main.js`:
-```javascript
-export const CONFIG = {
-  PROJECTS: {
-    c: {
-      category: 'C / Systems & Logic',
-      title: 'C: Game Logic Builds',
-      description: '...',
-      builds: [...]
-    },
-    // ...
-  }
-};
-```
-
-### 3. Contact Form Endpoint Configuration
-The contact form is configured to connect to **Formspree** or **Web3Forms**:
-
-1. Create a free form at [formspree.io](https://formspree.io) or [web3forms.com](https://web3forms.com).
-2. Copy your form endpoint URL (e.g., `https://formspree.io/f/xbjvkqzp`).
-3. Open `js/main.js` and update `CONFIG.FORM_ENDPOINT`:
-   ```javascript
-   export const CONFIG = {
-     FORM_ENDPOINT: 'https://formspree.io/f/YOUR_FORM_ID',
-     // ...
-   };
-   ```
-4. Submissions automatically display the confirmation banner:
-   > *"Message received. Thank you for reaching out. Tanya will reply as soon as possible."*
-
----
-
-## 🌐 Deploying to GitHub Pages
-
-All asset paths are relative (`./assets/...`), allowing the site to run under custom domains as well as user sub-paths (`https://<username>.github.io/<repo>/`).
-
-### Option 1: Automated GitHub Actions (Included)
-The repository includes `.github/workflows/deploy.yml`.
-1. Push your repository to GitHub.
-2. Go to **Settings** → **Pages**.
-3. Under **Build and deployment** → **Source**, select **GitHub Actions**.
-4. Every push to `main` will automatically build and publish the live site.
-
-### Option 2: Deploy from Branch
-1. Go to your repository on GitHub.
-2. Navigate to **Settings** → **Pages**.
-3. Under **Source**, select **Deploy from a branch**.
-4. Choose Branch: `main`, Folder: `/ (root)`.
-5. Click **Save**. Your site will be live in 1–2 minutes!
-
----
-
-## 📜 Git Commands to Push to a New Repository
-
-```bash
-# Initialize git repository
-git init -b main
-
-# Stage all files
-git add .
-
-# Create initial commit
-git commit -m "feat: cinematic editorial portfolio for Tanya Singh"
-
-# Link to your remote GitHub repository (replace with your repo URL)
-git remote add origin https://github.com/<your-username>/<repo-name>.git
-
-# Push to GitHub
-git push -u origin main
-```
-

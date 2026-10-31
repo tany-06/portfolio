@@ -4,11 +4,12 @@
  * Powered by GSAP, ScrollTrigger, and Lenis Smooth Scroll
  */
 
+// --- CLOUDFLARE WORKER ENDPOINT FOR REAL EMAIL DELIVERY VIA BREVO ---
+const FORM_ENDPOINT = "https://REPLACE-ME.workers.dev/send";
+
 // --- CONFIGURATION CONSTANTS ---
 export const CONFIG = {
-  // Configurable Form Endpoint (Formspree, Web3Forms, etc.)
-  // Replace with your real Formspree ID: 'https://formspree.io/f/your_form_id'
-  FORM_ENDPOINT: 'https://formspree.io/f/placeholder_tan',
+  FORM_ENDPOINT,
   
   // Projects Data for Modal Expansion
   PROJECTS: {
@@ -608,109 +609,137 @@ function initSectionAnimations(prefersReducedMotion) {
 }
 
 /* ==========================================================================
-   13. ACCESSIBLE CONTACT FORM WITH NOTIFICATION STATE
+   13. REAL EMAIL DELIVERY VIA BREVO & CLOUDFLARE WORKER
    ========================================================================== */
 function initContactForm() {
   const form = document.getElementById('contactForm');
   const successBanner = document.getElementById('formSuccessBanner');
   const errorBanner = document.getElementById('formErrorBanner');
   const submitBtn = document.getElementById('formSubmitBtn') || form?.querySelector('.form-submit-btn');
-  if (!form || !successBanner) return;
+  if (!form || !successBanner || !errorBanner) return;
 
-  // Clear error message when user types
+  let lastSentTimestamp = 0;
+  const COOLDOWN_DURATION_MS = 30000; // 30-second cooldown
+
+  // Clear messages when user types
   form.addEventListener('input', () => {
-    if (errorBanner) errorBanner.classList.remove('visible');
+    errorBanner.classList.remove('visible');
+    successBanner.classList.remove('visible');
   });
-
-  // Pre-submit click feedback for empty fields
-  if (submitBtn) {
-    submitBtn.addEventListener('click', () => {
-      if (!form.checkValidity()) {
-        if (errorBanner) {
-          errorBanner.textContent = 'Please complete all required fields with a valid email.';
-          errorBanner.classList.add('visible');
-        }
-      }
-    });
-  }
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    if (errorBanner) errorBanner.classList.remove('visible');
+    errorBanner.classList.remove('visible');
+    successBanner.classList.remove('visible');
 
-    // Input values
+    const btnText = submitBtn?.querySelector('.btn-text');
+    const btnIcon = submitBtn?.querySelector('.btn-icon');
+
+    // Reset button helper
+    const resetButton = () => {
+      if (submitBtn) submitBtn.disabled = false;
+      if (btnText) btnText.textContent = 'Send Message';
+      if (btnIcon) btnIcon.innerHTML = '&rarr;';
+    };
+
+    // Client-side cooldown check
+    const now = Date.now();
+    if (now - lastSentTimestamp < COOLDOWN_DURATION_MS) {
+      const remainingSec = Math.ceil((COOLDOWN_DURATION_MS - (now - lastSentTimestamp)) / 1000);
+      errorBanner.textContent = `Please wait ${remainingSec} seconds before sending another message.`;
+      errorBanner.classList.add('visible');
+      return;
+    }
+
+    // Extract field values
     const nameInput = form.querySelector('[name="name"]');
     const emailInput = form.querySelector('[name="email"]');
     const subjectInput = form.querySelector('[name="subject"]');
     const messageInput = form.querySelector('[name="message"]');
+    const websiteInput = form.querySelector('[name="website"]');
 
-    if (!nameInput?.value.trim() || !emailInput?.value.trim() || !subjectInput?.value.trim() || !messageInput?.value.trim()) {
-      if (errorBanner) {
-        errorBanner.textContent = 'Please fill out all fields before sending.';
-        errorBanner.classList.add('visible');
-      }
+    const name = (nameInput?.value || '').trim();
+    const email = (emailInput?.value || '').trim();
+    const subject = (subjectInput?.value || '').trim();
+    const message = (messageInput?.value || '').trim();
+    const website = (websiteInput?.value || '').trim();
+
+    // Validation rules: name (2-80), valid email, subject (2-120), message (10-2000)
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const isNameValid = name.length >= 2 && name.length <= 80;
+    const isEmailValid = emailRegex.test(email) && email.length <= 120;
+    const isSubjectValid = subject.length >= 2 && subject.length <= 120;
+    const isMessageValid = message.length >= 10 && message.length <= 2000;
+
+    if (!isNameValid || !isEmailValid || !isSubjectValid || !isMessageValid) {
+      errorBanner.textContent = 'Please complete all required fields with a valid email.';
+      errorBanner.classList.add('visible');
+      if (!isNameValid && nameInput) nameInput.focus();
+      else if (!isEmailValid && emailInput) emailInput.focus();
+      else if (!isSubjectValid && subjectInput) subjectInput.focus();
+      else if (!isMessageValid && messageInput) messageInput.focus();
       return;
     }
 
-    // Email validation
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(emailInput.value.trim())) {
-      if (errorBanner) {
-        errorBanner.textContent = 'Please enter a valid email address.';
-        errorBanner.classList.add('visible');
-      }
-      emailInput.focus();
+    // Endpoint placeholder check: NEVER fake success
+    if (!FORM_ENDPOINT || FORM_ENDPOINT.includes('REPLACE-ME')) {
+      console.warn('[Contact Form] FORM_ENDPOINT contains "REPLACE-ME" or is not configured. Real email dispatch cannot proceed until Cloudflare Worker is deployed.');
+      errorBanner.textContent = "Couldn't send your message. Please email tech.tan06@gmail.com directly.";
+      errorBanner.classList.add('visible');
       return;
     }
 
-    const btnText = submitBtn?.querySelector('.btn-text');
-    const btnIcon = submitBtn?.querySelector('.btn-icon');
-    if (submitBtn) {
-      if (btnText) btnText.textContent = 'Transmitting...';
-      if (btnIcon) btnIcon.innerHTML = '&hellip;';
-      submitBtn.disabled = true;
-    }
-
-    const formData = new FormData(form);
+    // Indicate transmission in progress
+    if (submitBtn) submitBtn.disabled = true;
+    if (btnText) btnText.textContent = 'Transmitting...';
+    if (btnIcon) btnIcon.innerHTML = '&hellip;';
 
     try {
-      if (CONFIG.FORM_ENDPOINT && !CONFIG.FORM_ENDPOINT.includes('placeholder_tan')) {
-        await fetch(CONFIG.FORM_ENDPOINT, {
-          method: 'POST',
-          body: formData,
-          headers: { 'Accept': 'application/json' }
-        });
-      } else {
-        await new Promise((resolve) => setTimeout(resolve, 600));
+      const response = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          subject,
+          message,
+          website
+        })
+      });
+
+      let data = null;
+      try {
+        data = await response.json();
+      } catch {
+        data = null;
       }
 
-      successBanner.textContent = 'Message received. Thank you for reaching out. Tanya will reply as soon as possible.';
-      successBanner.classList.add('visible');
-      form.reset();
+      // Check for strict server confirmation: HTTP 200 and { ok: true }
+      if (response.ok && data && data.ok === true) {
+        lastSentTimestamp = Date.now();
+        successBanner.textContent = 'Message received. Thank you for reaching out. Tanya will reply as soon as possible.';
+        successBanner.classList.add('visible');
+        form.reset();
 
-      if (btnText) btnText.textContent = '✓ Message Sent';
-      if (btnIcon) btnIcon.innerHTML = '';
+        if (btnText) btnText.textContent = '✓ Message Sent';
+        if (btnIcon) btnIcon.innerHTML = '';
 
-      setTimeout(() => {
-        if (btnText) btnText.textContent = 'Send Message';
-        if (btnIcon) btnIcon.innerHTML = '&rarr;';
-        if (submitBtn) submitBtn.disabled = false;
-      }, 4000);
-
+        setTimeout(() => {
+          resetButton();
+        }, 4000);
+      } else {
+        throw new Error(data?.error || `Server responded with status ${response.status}`);
+      }
     } catch (err) {
-      successBanner.textContent = 'Message received. Thank you for reaching out. Tanya will reply as soon as possible.';
-      successBanner.classList.add('visible');
-      form.reset();
-
-      if (btnText) btnText.textContent = '✓ Message Sent';
-      if (btnIcon) btnIcon.innerHTML = '';
-
-      setTimeout(() => {
-        if (btnText) btnText.textContent = 'Send Message';
-        if (btnIcon) btnIcon.innerHTML = '&rarr;';
-        if (submitBtn) submitBtn.disabled = false;
-      }, 4000);
+      console.error('[Contact Form Error]', err);
+      // On any failure, show clear error, re-enable button, and keep user's text in fields
+      errorBanner.textContent = "Couldn't send your message. Please email tech.tan06@gmail.com directly.";
+      errorBanner.classList.add('visible');
+      resetButton();
     }
   });
 }

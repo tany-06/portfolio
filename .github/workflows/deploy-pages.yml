@@ -1,8 +1,10 @@
-name: Deploy to GitHub Pages
+name: Deploy Static Site to GitHub Pages
 
 on:
   push:
     branches: ["main"]
+    paths-ignore:
+      - "worker/**"
   workflow_dispatch:
 
 permissions:
@@ -35,4 +37,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-

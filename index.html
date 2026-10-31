@@ -967,10 +967,13 @@
             <h3 class="form-title">SEND A MESSAGE</h3>
             <p class="form-subtitle">Open for academic collaboration, project discussions, or engineering inquiries.</p>
 
-            <form id="contactForm" class="portfolio-form" action="#" method="POST">
+            <form id="contactForm" class="portfolio-form" action="#" method="POST" novalidate>
+              <!-- Honeypot anti-spam trap (hidden from real users) -->
+              <input type="text" name="website" id="formWebsite" class="visually-hidden-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
               <div class="form-group">
                 <label for="formName" class="form-label">Your Name</label>
-                <input type="text" id="formName" name="name" class="form-input" placeholder="e.g. Alex Morgan" required>
+                <input type="text" id="formName" name="name" class="form-input" placeholder="e.g. Alex Morgan" required minlength="2" maxlength="80">
               </div>
 
               <div class="form-group">

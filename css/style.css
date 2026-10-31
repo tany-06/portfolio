@@ -2005,6 +2005,17 @@ body.cursor-hover .cursor-dot {
   box-shadow: 0 12px 30px rgba(192, 57, 43, 0.5);
 }
 
+/* Honeypot field (hidden from real users & tab navigation) */
+.visually-hidden-hp {
+  position: absolute !important;
+  left: -9999px !important;
+  top: -9999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
 /* Form Success Notification State */
 .form-success-banner {
   display: none;
